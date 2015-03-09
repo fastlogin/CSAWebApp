@@ -6,7 +6,9 @@ var db = mongoose.connection;
  * Initializing families for JustJuice
  */
 
- function makeSchemas(callback){
+
+
+db.once('open',function(){
 	var justJuice = mongoose.Schema({
 		heads: [String] ,
 		members: [String]
@@ -32,20 +34,10 @@ var db = mongoose.connection;
 		heads: [String] ,
 		members: [String]
 	});
-	mongoose.model('KellysDumpling', justJuice);
-	var nancy = mongoose.model('KellysDumpling');
+	mongoose.model('NancysWanton', justJuice);
+	var nancy = mongoose.model('NancysWanton');
 
-	callback();
- }
 
- function allInit(){
- 	juiceInit();
- 	yellowInit();
- 	kellyInit();
- 	nancyInit();
- }
-
-function juiceInit(){
 	var juiceone = new juice({
 		heads: ["David Cho", "Hyunwoo Yu", "Michelle Zhang"],
 		members: ["Heather Cai", "Jenice Xiao", "Jesse Chen", "Matthew Teng"]
@@ -76,7 +68,7 @@ function juiceInit(){
 	});
 	var juicefive = new juice({
 		heads: ["Brandon Eng" , "Kat Ren" , "Merry Huang"],
-		members: ["Holly Deng", "Jack Kim", "Leo Tang", "Jason Wu", "Mary Chen"];
+		members: ["Holly Deng", "Jack Kim", "Leo Tang", "Jason Wu", "Mary Chen"]
 	});
 	juicefive.save(function(err){
 		if(err) throw err;
@@ -95,9 +87,7 @@ function juiceInit(){
 	juiceseven.save(function(err){
 		if(err) throw err;
 	});
-}
 
-function yellowInit(){
 	var yellowone = new yellow({
 		heads: ["Nancy Wang" , "Hong Jeon"],
 		members: ["Jackie Dokku", "Megan Buteau", "Annie Cheng", "Tao Quan", "Brandon Zhang"]
@@ -128,7 +118,7 @@ function yellowInit(){
 	});
 	var yellowfive = new yellow({
 		heads: ["Jamie Lo","Jeff Lin"],
-		members: ["Dennis Liu","Rachelle Ng","Regina Chen"];
+		members: ["Dennis Liu","Rachelle Ng","Regina Chen"]
 	});
 	yellowfive.save(function(err){
 		if(err) throw err;
@@ -147,9 +137,7 @@ function yellowInit(){
 	yellowseven.save(function(err){
 		if(err) throw err;
 	});
-}
 
-function kellyInit(){
 	var kellyone = new kelly({
 		heads: ["Christine Chu" , "Tiffany Guo"],
 		members: ["Peter Li","Alex Zhang","Michael Yao","Eugenia Xiao"]
@@ -180,7 +168,7 @@ function kellyInit(){
 	});
 	var kellyfive = new kelly({
 		heads: ["Brandon Yep", "Alex Park"],
-		members: ["Lawrence Ho","Calvin Ng","Angela Sun","Rosalind Ma"];
+		members: ["Lawrence Ho","Calvin Ng","Angela Sun","Rosalind Ma"]
 	});
 	kellyfive.save(function(err){
 		if(err) throw err;
@@ -189,7 +177,7 @@ function kellyInit(){
 		heads: ["Tommy Chen" , "Fulian Pan"],
 		members: ["Ally Wu","Eileen Dai","Yujin Hur","Mingyung Jiang"]
 	});
-	kellyix.save(function(err){
+	kellysix.save(function(err){
 		if(err) throw err;
 	});
 	var kellyseven = new kelly({
@@ -199,9 +187,7 @@ function kellyInit(){
 	kellyseven.save(function(err){
 		if(err) throw err;
 	});
-}
 
-function nancyInit(){
 	var nancyone = new nancy({
 		heads: ["Richard Wan","Caroline Qu"],
 		members: ["Allen Jiang","George Mao","Alexander Tang"]
@@ -232,9 +218,9 @@ function nancyInit(){
 	});
 	var nancyfive = new nancy({
 		heads: ["Ashley Wong" , "Alex Zhou"],
-		members: ["Kaitlyn Yong" ,"Erinn Liu","Raymond Lau"];
+		members: ["Kaitlyn Yong" ,"Erinn Liu","Raymond Lau"]
 	});
-	juicefive.save(function(err){
+	nancyfive.save(function(err){
 		if(err) throw err;
 	});
 	var nancysix = new nancy({
@@ -251,8 +237,4 @@ function nancyInit(){
 	nancyseven.save(function(err){
 		if(err) throw err;
 	});
-}
-
-db.once('open',function(){
-	makeSchemas(allInit());
 });
