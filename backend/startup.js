@@ -1,76 +1,9 @@
 var db = require('./db');
-
-var announce = db.mongoose.Schema({
-	posted: Date,
-	poster: String,
-	content: String,
-	comments: [String]
-});
-db.mongoose.model('Announcements',announce);
-var announcements = db.mongoose.model('Announcements');
-
-var events = db.mongoose.Schema({
-	name: String,
-	passed: Boolean,
-	description: String,
-	page: String,
-	album: String,
-	maps: String
-});
-db.mongoose.model('Events', events);
-var csaEvent = db.mongoose.model('Events');
-
-
-var justJuice = db.mongoose.Schema({
-	heads: [String] ,
-	members: [String],
-	points: Number
-});
-db.mongoose.model('JustJuice', justJuice);
-var juice = db.mongoose.model('JustJuice');
-
-var yellowFellow = db.mongoose.Schema({
-	heads: [String] ,
-	members: [String] ,
-	points: Number
-});
-db.mongoose.model('YellowFellow', justJuice);
-var yellow = db.mongoose.model('YellowFellow');
-
-var kellyDumpling = db.mongoose.Schema({
-	heads: [String] ,
-	members: [String] ,
-	points: Number
-});
-db.mongoose.model('KellysDumpling', justJuice);
-var kelly = db.mongoose.model('KellysDumpling');
-
-var nancyWantonJuice = db.mongoose.Schema({
-	heads: [String] ,
-	members: [String] ,
-	points: Number
-});
-db.mongoose.model('NancysWanton', justJuice);
-var nancy = db.mongoose.model('NancysWanton');
-
+var schemas = require('./schemas');
 
 module.exports = {
-	initAnnounce: function (){
-			announcements.find({},function(err,docs){
-				if(err) throw err;
-				return docs;
-			});
-		},
-
-	initEvent: function(){
-			csaEvent.find({},function(err,docs){
-				if(err) throw err;
-				return docs;
-			});
-		},
-
-	initJuice: function(response){
-			juice.find({},function(err,docs){
+	initAnnounce: function (response){
+			schemas.announcements.find({},function(err,docs){
 				if(err) throw err;
 				response.end(JSON.stringify({
 					array: docs
@@ -78,24 +11,48 @@ module.exports = {
 			});
 		},
 
-	initYellow: function(){
-			yellow.find({},function(err,docs){
+	initEvent: function(response){
+			schemas.csaEvent.find({},function(err,docs){
 				if(err) throw err;
-				return docs;
+				response.end(JSON.stringify({
+					array: docs
+				}));
 			});
 		},
 
-	initKelly: function(){
-			kelly.find({},function(err,docs){
+	initJuice: function(response){
+			schemas.juice.find({},function(err,docs){
 				if(err) throw err;
-				return docs;
+				response.end(JSON.stringify({
+					array: docs
+				}));
 			});
 		},
 
-	initNancy: function(){
-			nancy.find({},function(err,docs){
+	initYellow: function(response){
+			schemas.yellow.find({},function(err,docs){
 				if(err) throw err;
-				return docs;
+				response.end(JSON.stringify({
+					array: docs
+				}));
+			});
+		},
+
+	initKelly: function(response){
+			schemas.kelly.find({},function(err,docs){
+				if(err) throw err;
+				response.end(JSON.stringify({
+					array: docs
+				}));
+			});
+		},
+
+	initNancy: function(response){
+			schemas.nancy.find({},function(err,docs){
+				if(err) throw err;
+				response.end(JSON.stringify({
+					array: docs
+				}));
 			});
 		}
 }

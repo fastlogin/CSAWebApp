@@ -52,32 +52,22 @@ var server = http.createServer(function(request, response) {
 	var filePath = false;
 	if(urlCheck(request.url, '/init') > -1){
 		if(urlCheck(request.url , 'Announce') > -1){
-			response.end(JSON.stringify({
-				array: startup.initAnnounce()
-			}));
+			startup.initAnnounce(response);
 		}
 		if(urlCheck(request.url , 'Event') > -1){
-			response.end(JSON.stringify({
-				array: startup.initEvent()
-			}));
+			startup.initEvent(response);
 		}
 		if(urlCheck(request.url, 'Juice') > -1){
 			startup.initJuice(response);
 		}
 		if(urlCheck(request.url, 'Yellow') > -1){
-			response.end(JSON.stringify({
-				array: startup.initYellow()
-			}));
+			startup.initYellow(response);
 		}
 		if(urlCheck(request.url, 'Kelly') > -1){
-			response.end(JSON.stringify({
-				array: startup.initKelly()
-			}));
+			startup.initKelly(response);
 		}
 		if(urlCheck(request.url, 'Nancy') > -1){
-			response.end(JSON.stringify({
-				array: startup.initNancy()
-			}));
+			startup.initNancy(response);
 		}
 	}
 	else if(request.url == '/'){
