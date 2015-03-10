@@ -9,9 +9,9 @@ $(document).ready(function(){
  /********************************************/
 
 $(document).ready(function(){
-  $.get('/initialize',function(data){
+  $.get('/initJuice',function(data){
     var result = jQuery.parseJSON(data);
-    
+    console.log(result.array.length);
   });
 })
 

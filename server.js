@@ -6,6 +6,10 @@ var cache = {};
 var startup = require('./backend/startup');
 var db = require('./backend/db');
 
+function urlCheck(request, url){
+	return request.indexOf(url);
+}
+
 function send404(response){
 	response.writeHead(404, {'Content-type' : 'text/plain'});
 	response.write('Error 420: You got juiced.');
@@ -46,13 +50,40 @@ function serveStatic(response, cache, absPath){
 
 var server = http.createServer(function(request, response) {
 	var filePath = false;
-	if(request.url == '/'){
+	if(urlCheck(request.url, '/init') > -1){
+		if(urlCheck(request.url , 'Announce') > -1){
+			response.end(JSON.stringify({
+				array: startup.initAnnounce()
+			}));
+		}
+		if(urlCheck(request.url , 'Event') > -1){
+			response.end(JSON.stringify({
+				array: startup.initEvent()
+			}));
+		}
+		if(urlCheck(request.url, 'Juice') > -1){
+			startup.initJuice(response);
+		}
+		if(urlCheck(request.url, 'Yellow') > -1){
+			response.end(JSON.stringify({
+				array: startup.initYellow()
+			}));
+		}
+		if(urlCheck(request.url, 'Kelly') > -1){
+			response.end(JSON.stringify({
+				array: startup.initKelly()
+			}));
+		}
+		if(urlCheck(request.url, 'Nancy') > -1){
+			response.end(JSON.stringify({
+				array: startup.initNancy()
+			}));
+		}
+	}
+	else if(request.url == '/'){
 		filePath = 'public/index.html';
 		var absPath = './' + filePath;
 		serveStatic(response, cache, absPath);
-	}
-	else if(request.url == '/initialize'){
-		response.end(JSON.stringify(startup.initAll()));
 	}
 	else{
 		filePath = 'public' + request.url;
