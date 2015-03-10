@@ -3,6 +3,8 @@ var fs = require('fs');
 var path = require('path');
 var mime = require('mime');
 var cache = {};
+var startup = require('./backend/startup');
+var db = require('./backend/db');
 
 function send404(response){
 	response.writeHead(404, {'Content-type' : 'text/plain'});
@@ -42,15 +44,15 @@ function serveStatic(response, cache, absPath){
 		}
 }
 
-function jsonParser(dataPath){
-}
-
 var server = http.createServer(function(request, response) {
 	var filePath = false;
 	if(request.url == '/'){
 		filePath = 'public/index.html';
 		var absPath = './' + filePath;
 		serveStatic(response, cache, absPath);
+	}
+	else if(request.url == '/initialize'){
+		response.end(JSON.stringify(startup.initAll()));
 	}
 	else{
 		filePath = 'public' + request.url;

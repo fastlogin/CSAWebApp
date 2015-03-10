@@ -8,6 +8,12 @@ $(document).ready(function(){
 })
  /********************************************/
 
+$(document).ready(function(){
+  $.get('/initialize',function(data){
+    var result = jQuery.parseJSON(data);
+    
+  });
+})
 
 /*************Splash Functions*************/
      $(document).ready(function(){
