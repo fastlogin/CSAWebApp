@@ -1,6 +1,11 @@
 #obliterate{
 	display: none;
 }
+
+#footer{
+	overflow: hidden;
+}
+
 body {
 	margin: 0;
 }
@@ -144,6 +149,54 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 	opacity: 1.0;
 }
 
+.announcement{
+	text-align: left;
+	font-family: Open Sans;
+	font-size: 15px;
+	color: rgb(70,70,70);
+	margin: 10px;
+}
+
+#annons{
+	display: none;
+}
+
+.acont{
+	background-color: rgb(245,245,245);
+	border-radius: 10px;
+	padding: 10px;
+}
+.ri{
+	margin-left: 15px;
+}
+
+.li{
+	color: rgb(220,85,120);
+}
+
+.none{
+	font-size: 20px;
+	font-weight: 700;
+	color: rgb(200,200,200);
+}
+
+.alabel{
+	font-weight: 700;
+}
+
+.aico{
+	margin-right: 10px;
+	top: 4px;
+}
+
+#announce{
+	text-align: left;
+	padding: 15px;
+	font-size: 30px;
+	color: rgb(220, 85, 120);
+	background-color: white;
+}
+
 #abouthead{
 	margin-top: 20px;
 	font-family: Raleway;
@@ -216,15 +269,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 #fambody{
 	background-image: url('family.jpg');
 	background-size: cover;
-	background-position: 0px -650px;
+	background-attachment: fixed;
 }
 
 .fambuttontext{
 	font-family: Raleway;
 	font-size: 24px;
 	color: white;
-/*	background-color: rgba(0,0,0,0.1);
-	border-radius: 10px;*/
 	padding: 10px;
 
 }
@@ -266,20 +317,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 	padding: 10px;
 }
 
-/*.juicebord{
-	border-right: 3px solid;
-	border-right-color: rgb(180,130,175);
+.points{
+	color: rgb(255,240,80);
+	font-weight: 700;
+	font-size: 18px;
 }
 
-.juiceup{
-	background-color: rgb(220,170,215);
-}
-
-
-.juicedown{
-	background-color: rgb(255,205,250);
-}
-*/
 .lead{
 	font-size: 16px;
 	font-family: Raleway;
@@ -562,6 +605,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f7f7', end
 
 #contactend{
 		background-color: rgb(220,85,120);
+		margin-bottom: -100px;
 }
 
 #contactend a:hover{
@@ -675,26 +719,18 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f7f7', end
 @media(max-width: 998px){
 	.juicebord{
 	border-right: 0px;
-	border-bottom: 3px solid;
-	border-bottom-color: rgb(180,130,175);
 }
 
 .dumpbord{
 		border-right: 0px;
-	border-bottom: 3px solid;
-	border-bottom-color: rgb(210,190,130);
 }
 
 .yellowbord{
 		border-right: 0px;
-	border-bottom: 3px solid;
-	border-bottom-color: rgb(190,190,190);
 }
 
 .wanbord{
 		border-right: 0px;
-	border-bottom: 3px solid;
-	border-bottom-color: rgb(110,145,185);
 }
 
 .eventimg span{

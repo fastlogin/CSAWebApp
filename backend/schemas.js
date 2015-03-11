@@ -1,7 +1,7 @@
 var db = require('./db');
 
 var announce = db.mongoose.Schema({
-	posted: Date,
+	posted: String,
 	poster: String,
 	content: String,
 	comments: [String]
@@ -18,15 +18,12 @@ var events = db.mongoose.Schema({
 });
 db.mongoose.model('Events', events);
 
-
-
 var justJuice = db.mongoose.Schema({
 	heads: [String] ,
 	members: [String],
 	points: Number
 });
 db.mongoose.model('JustJuice', justJuice);
-
 
 var yellowFellow = db.mongoose.Schema({
 	heads: [String] ,
@@ -35,14 +32,12 @@ var yellowFellow = db.mongoose.Schema({
 });
 db.mongoose.model('YellowFellow', justJuice);
 
-
 var kellyDumpling = db.mongoose.Schema({
 	heads: [String] ,
 	members: [String] ,
 	points: Number
 });
 db.mongoose.model('KellysDumpling', justJuice);
-
 
 var nancyWantonJuice = db.mongoose.Schema({
 	heads: [String] ,

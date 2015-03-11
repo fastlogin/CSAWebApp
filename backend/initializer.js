@@ -4,6 +4,15 @@ var db = mongoose.connection;
 
 db.once('open',function(){
 
+	var announce = mongoose.Schema({
+		posted: String,
+		poster: String,
+		content: String,
+		comments: [String]
+	});
+	mongoose.model('Announcements',announce);
+	var announcements = mongoose.model('Announcements');
+
 	var events = mongoose.Schema({
 		name: String,
 		passed: Boolean,
@@ -46,6 +55,26 @@ db.once('open',function(){
 	});
 	mongoose.model('NancysWanton', justJuice);
 	var nancy = mongoose.model('NancysWanton');
+
+	var announceone = new announcements({
+		posted: "3/11/2015",
+		poster: "George Ding",
+		content: "Woo! Initialization works! the website is so close to being finished, thank you everyone for being so patient! :)",
+		comments: ["Nice!","Wow","Awesome"]
+	});
+	announceone.save(function(err){
+		if(err) throw err;
+	});
+
+	var announcetwo = new announcements({
+		posted: "3/10/2015",
+		poster: "Nancy Wang",
+		content: "1/365 Late night studying in Duffield with friends. Happy Chinese New Year! Super awkward late start to this, but I want to take more pictures and what better way to do it than the 365 day challenge? Expect lots of studying pictures.",
+		comments: ["Nice!","Wow"]
+	});
+	announcetwo.save(function(err){
+		if(err) throw err;
+	})
 
 	var eventone = new csaEvent({
 		name: "Social Week",
