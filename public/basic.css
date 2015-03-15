@@ -19,6 +19,11 @@ a:hover{
 	color: inherit;
 }
 
+a:hover, a:visited, a:link, a:active
+{
+    text-decoration: none;
+}
+
 #navbar {
 	display: none;
 }
@@ -472,13 +477,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 }
 
 #china{
-	background-image: url('china.jpg');
+	background-image: url('gbody.jpg');
 	background-size: cover;
 	background-position: center;
 }
 
 #gbody{
-	background-image: url('gbody.jpg');
+	background-image: url('china.jpg');
 	background-size: cover;
 	background-position: center;
 }
@@ -686,6 +691,22 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f7f7', end
 
 #newscirc{
 	color: rgb(250,200,65);
+}
+
+#dashback{
+	font-size: 38px;
+	top: 6px;
+}
+
+.eventitems{
+	font-size: 24px;
+	color: rgb(220,85,120);
+	text-align: left;
+	font-family: Open Sans;
+}
+
+.eventitems:hover{
+	opacity: 0.6;
 }
 
 @media(max-width: 1200px){

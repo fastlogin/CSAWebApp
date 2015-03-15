@@ -448,6 +448,13 @@ $(document).ready(function(){
       color : 'rgb(250,200,65)'
     },600)
   })
+
+   $('#eventcirc').click(function(){
+   });
+   $('#famcirc').click(function(){
+   })
+   $('#newscirc').click(function(){
+   })
  })
   /********************************************/
 
