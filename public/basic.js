@@ -1,4 +1,5 @@
 
+
 function eventCondition(bool){
   if(bool) return "Passed"
   else
@@ -6,6 +7,306 @@ function eventCondition(bool){
 }
 /*************Insert Function Name*************/
  /********************************************/
+
+$(document).ready(function(){
+  $("input:checkbox").on('click', function() {
+  var $box = $(this);
+  if ($box.is(":checked")) {
+    var group = "input:checkbox[name='" + $box.attr("name") + "']";
+    $(group).prop("checked", false);
+    $box.prop("checked", true);
+  } else {
+    $box.prop("checked", false);
+  }
+});
+})
+
+$(document).ready(function(){
+  var animating = false;
+  var current;
+  var currenttext;
+  $('#eventdashclick').click(function(){
+    if(!animating){
+    animating = true;
+    $('#welcometext').fadeToggle(500,function(){
+      $('#dashback').fadeToggle(300);
+      $('#eventedittext').fadeToggle(300, function(){
+        animating = false;
+      });
+      currenttext = $('#eventedittext')
+    });
+    $('#dash').slideToggle(500, function(){
+      $('#eventoptions').slideToggle(300);
+      current = $('#eventoptions');
+    });
+   }
+  });
+
+  $('#socialedit').click(function(){
+    if(!animating){
+      animating = true;
+    $('#eventoptions').fadeToggle(500, function(){
+      $('#socialeditdash').fadeToggle(300, function(){
+        animating = false;
+      });
+      current = $('#socialeditdash');
+    });
+    }
+  });
+
+  $('#midnightedit').click(function(){
+    if(!animating){
+      animating = true;
+    $('#eventoptions').fadeToggle(500, function(){
+      $('#midnighteditdash').fadeToggle(300, function(){
+        animating = false;
+      });
+      current = $('#midnighteditdash');
+    });
+    }
+  });
+
+  $('#autumnedit').click(function(){
+    if(!animating){
+      animating = true;
+    $('#eventoptions').fadeToggle(500, function(){
+      $('#autumneditdash').fadeToggle(300, function(){
+        animating = false;
+      });
+      current = $('#autumneditdash');
+    });
+    }
+  });
+
+    $('#semiedit').click(function(){
+    if(!animating){
+      animating = true;
+    $('#eventoptions').fadeToggle(500, function(){
+      $('#semieditdash').fadeToggle(300, function(){
+        animating = false;
+      });
+      current = $('#semieditdash');
+    });
+    }
+  });
+
+    $('#lnyedit').click(function(){
+    if(!animating){
+      animating = true;
+    $('#eventoptions').fadeToggle(500, function(){
+      $('#lnyeditdash').fadeToggle(300, function(){
+        animating = false;
+      });
+      current = $('#lnyeditdash');
+    });
+    }
+  });
+
+    $('#chinaedit').click(function(){
+    if(!animating){
+      animating = true;
+    $('#eventoptions').fadeToggle(500, function(){
+      $('#chinaeditdash').fadeToggle(300, function(){
+        animating = false;
+      });
+      current = $('#chinaeditdash');
+    });
+    }
+  });
+
+  $('#dashback').click(function(){
+      if(!animating){
+        animating = true;
+        $('#dashback').fadeToggle(500);
+        current.fadeToggle(500,function(){
+          $('#dash').fadeToggle(300,function(){
+            animating = false;
+          });
+        });
+        currenttext.fadeToggle(500, function(){
+          $('#welcometext').fadeToggle(300);
+        });
+      }
+      });
+})
+
+$(document).ready(function(){
+
+  $.get('/eventsInitSocial', function(data){
+    var result = jQuery.parseJSON(data);
+    if(result.album = 'javascript:;'){
+          $('#socialalbum').val("");
+    }
+    else{
+          $('#socialalbum').val(result.album);
+    }
+    if(result.passed){
+      $('#socialpassed').prop("checked",true);
+      $('#socialcoming').prop("checked",false);
+    }
+    else{
+      $('#socialpassed').prop("checked",false);
+      $('#socialcoming').prop("checked",true);
+    }
+    $('#sociald').val(result.description);
+    $('#socialfbpage').val(result.page);
+
+    $('#socialmaps').val(result.maps);
+  });
+
+
+  $('#socialsubmit').click(function(){
+      $.get('/eventsEditSocial',{passed: $('#socialpassed').checked, description: $('#sociald').val(), page: $('#socialfbpage').val(), album: $('#socialalbum').val(), maps:$('#socialmaps').val()}, function(data){
+        console.log('fornow');
+      });
+  });
+
+  $.get('/eventsInitMidnight', function(data){
+    var result = jQuery.parseJSON(data);
+    if(result.album = 'javascript:;'){
+          $('#midnightalbum').val("");
+    }
+    else{
+          $('#midnightalbum').val(result.album);
+    }
+    if(result.passed){
+      $('#midnightpassed').prop("checked",true);
+      $('#midnightcoming').prop("checked",false);
+    }
+    else{
+      $('#midnightpassed').prop("checked",false);
+      $('#midnightcoming').prop("checked",true);
+    }
+    $('#midnightd').val(result.description);
+    $('#midnightfbpage').val(result.page);
+
+    $('#midnightmaps').val(result.maps);
+  });
+
+
+  $('#midnightsubmit').click(function(){
+      $.get('/eventsEditMidnight',{passed: $('#midnightpassed').checked, description: $('#midnightd').val(), page: $('#midnightfbpage').val(), album: $('#midnightalbum').val(), maps:$('#midnightmaps').val()}, function(data){
+        console.log('fornow');
+      });
+  });
+
+  $.get('/eventsInitAutumn', function(data){
+    var result = jQuery.parseJSON(data);
+    if(result.album = 'javascript:;'){
+          $('#autumnalbum').val("");
+    }
+    else{
+          $('#autumnalbum').val(result.album);
+    }
+    if(result.passed){
+      $('#autumnpassed').prop("checked",true);
+      $('#autumncoming').prop("checked",false);
+    }
+    else{
+      $('#autumnpassed').prop("checked",false);
+      $('#autumncoming').prop("checked",true);
+    }
+    $('#autumnd').val(result.description);
+    $('#autumnfbpage').val(result.page);
+
+    $('#autumnmaps').val(result.maps);
+  });
+
+
+  $('#autumnsubmit').click(function(){
+      $.get('/eventsEditAutumn',{passed: $('#autumnpassed').checked, description: $('#autumnd').val(), page: $('#autumnfbpage').val(), album: $('#autumnalbum').val(), maps:$('#autumnmaps').val()}, function(data){
+        console.log('fornow');
+      });
+  });
+
+  $.get('/eventsInitSemi', function(data){
+    var result = jQuery.parseJSON(data);
+    if(result.album = 'javascript:;'){
+          $('#semialbum').val("");
+    }
+    else{
+          $('#semialbum').val(result.album);
+    }
+    if(result.passed){
+      $('#semipassed').prop("checked",true);
+      $('#semicoming').prop("checked",false);
+    }
+    else{
+      $('#semipassed').prop("checked",false);
+      $('#semicoming').prop("checked",true);
+    }
+    $('#semid').val(result.description);
+    $('#semifbpage').val(result.page);
+
+    $('#semimaps').val(result.maps);
+  });
+
+
+  $('#semisubmit').click(function(){
+      $.get('/eventsEditSemi',{passed: $('#semipassed').checked, description: $('#semid').val(), page: $('#semifbpage').val(), album: $('#semialbum').val(), maps:$('#semimaps').val()}, function(data){
+        console.log('fornow');
+      });
+  });
+
+  $.get('/eventsInitLunar', function(data){
+    var result = jQuery.parseJSON(data);
+    if(result.album = 'javascript:;'){
+          $('#lunaralbum').val("");
+    }
+    else{
+          $('#lunaralbum').val(result.album);
+    }
+    if(result.passed){
+      $('#lunarpassed').prop("checked",true);
+      $('#lunarcoming').prop("checked",false);
+    }
+    else{
+      $('#lunarpassed').prop("checked",false);
+      $('#lunarcoming').prop("checked",true);
+    }
+    $('#lunard').val(result.description);
+    $('#lunarfbpage').val(result.page);
+
+    $('#lunarmaps').val(result.maps);
+  });
+
+
+  $('#lunarsubmit').click(function(){
+      $.get('/eventsEditLunar',{passed: $('#lunarpassed').checked, description: $('#lunard').val(), page: $('#lunarfbpage').val(), album: $('#lunaralbum').val(), maps:$('#lunarmaps').val()}, function(data){
+        console.log('fornow');
+      });
+  });
+
+$.get('/eventsInitChina', function(data){
+    var result = jQuery.parseJSON(data);
+    if(result.album = 'javascript:;'){
+          $('#chinaalbum').val("");
+    }
+    else{
+          $('#chinaalbum').val(result.album);
+    }
+    if(result.passed){
+      $('#chinapassed').prop("checked",true);
+      $('#chinacoming').prop("checked",false);
+    }
+    else{
+      $('#chinapassed').prop("checked",false);
+      $('#chinacoming').prop("checked",true);
+    }
+    $('#chinad').val(result.description);
+    $('#chinafbpage').val(result.page);
+
+    $('#chinamaps').val(result.maps);
+  });
+
+
+  $('#chinasubmit').click(function(){
+      $.get('/eventsEditChina',{passed: $('#chinapassed').checked, description: $('#chinad').val(), page: $('#chinafbpage').val(), album: $('#chinaalbum').val(), maps:$('#chinamaps').val()}, function(data){
+        console.log('fornow');
+      });
+  });
+
+})
 
 $(document).ready(function(){
   $('.aico').click(function(){

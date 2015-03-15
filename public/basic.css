@@ -6,6 +6,10 @@
 	overflow: hidden;
 }
 
+textarea{
+	resize:none;
+}
+
 body {
 	margin: 0;
 }
@@ -693,20 +697,72 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f7f7', end
 	color: rgb(250,200,65);
 }
 
-#dashback{
+.backbutton{
 	font-size: 38px;
 	top: 6px;
+}
+
+#dashback{
+	display: none;
 }
 
 .eventitems{
 	font-size: 24px;
 	color: rgb(220,85,120);
-	text-align: left;
 	font-family: Open Sans;
+}
+
+#eventoptions{
+	display: none;
 }
 
 .eventitems:hover{
 	opacity: 0.6;
+}
+
+.editdash{
+	font-size: 18px;
+	text-align: left;
+	padding: 10px;
+}
+
+.eventinputs{
+	font-size: 16px;
+	font-family: Open Sans;
+}
+
+.eventsubmits{
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.eventsubmits{
+	background-color: rgb(220,85,120);
+	color: white;
+	width: 150px;
+	padding: 10px;
+	border-radius: 10px;
+}
+
+.eventsubmits:hover{
+	opacity: 0.6;
+}
+
+.editdash{
+	display: none;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#eventedittext{
+	display: none;
+}
+
+#eventdash{
+	display: none;
+	text-align: center;
 }
 
 @media(max-width: 1200px){

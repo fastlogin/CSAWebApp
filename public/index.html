@@ -300,37 +300,131 @@
 </div>
 
 <div id='testme' class='row row-centered'>
-<p id='dashwelcome'>Welcome.
-    <a href='javascript:;'><span id='dashback' class="glyphicon glyphicon-circle-arrow-left"></span></a>
+<p id='dashwelcome'><span id='welcometext'>Welcome.</span>
+    <span id='eventedittext'>Choose an event to edit.</span>
+    <a id='dashback' href='javascript:;'><span class="backbutton glyphicon glyphicon-circle-arrow-left"></span></a>
 </p>
 <span id='dashdef'>The EBoard section is coming soon!</span>
-<div id='dash' class='col-md-12'><a href='javascript:;'><span id='eventcirc' class='glyphicon glyphicon-calendar dashicons'></span></a><a href='javascript:;'><span id='famcirc' class='glyphicon glyphicon-user dashicons'></span></a><a href='javascript:;'><span id='newscirc' class='glyphicon glyphicon-pencil dashicons'></span></a></div>
+<div id='dash' class='col-md-12'><a id='eventdashclick' href='javascript:;'><span id='eventcirc' class='glyphicon glyphicon-calendar dashicons'></span></a><a href='javascript:;'><span id='famcirc' class='glyphicon glyphicon-user dashicons'></span></a><a href='javascript:;'><span id='newscirc' class='glyphicon glyphicon-pencil dashicons'></span></a></div>
 <div id='instruct'>In the meantime if you are an Eboard member you can access the dash by entering the secret password!</div>
 <form id='eboardlogin'>
 <input type="password" name="pass">
 </form>
 <div id='wrong'>Sorry, that's wrong =(.</div>
-<div id='eventdash' class='col-md-6 col-centered'>
-<a href='javascript:;'><p id='socialedit' class='eventitems'>Social Week</p></a>
-<a href='javascript:;'><p id='midnightedit' class='eventitems'>Midnight Dimsum</p></a>
-<a href='javascript:;'><p id='autumnedit' class='eventitems'>Mid Autumn Festival</p></a>
-<a href='javascript:;'><p id='semiedit' class='eventitems'>Semiformal</p></a>
-<a href='javascript:;'><p id='lnyedit' class='eventitems'>Lunar New Year</p></a>
-<a href='javascript:;'><p id='chinaedit' class='eventitems'>China Night</p></a>
-<div id='socialeditdash'>
+
+
+<div id='eventoptions' class='col-md-12 col-centered'>
+<a id='socialedit' href='javascript:;'><p class='eventitems'>Social Week</p></a>
+<a id='midnightedit' href='javascript:;'><p class='eventitems'>Midnight Dimsum</p></a>
+<a id='autumnedit' href='javascript:;'><p class='eventitems'>Mid Autumn Festival</p></a>
+<a id='semiedit' href='javascript:;'><p class='eventitems'>Semiformal</p></a>
+<a id='lnyedit' href='javascript:;'><p class='eventitems'>Lunar New Year</p></a>
+<a id='chinaedit' href='javascript:;'><p class='eventitems'>China Night</p></a>
 </div>
-<div id='midnighteditdash'>
+
+
+
+<div class='editdash' id='socialeditdash'>
+
+<form id='socialediting'>
+<p>Description:</p>
+<p><textarea class='eventinputs' id='sociald' rows="4" cols="50" form='socialediting'>
+</textarea></p>
+  <p><input id='socialpassed' class ='passedcheck' name='eventstatus' type="checkbox"> Passed event
+  <input id='socialcoming' class ='upcheck' name='eventstatus' type="checkbox"> Upcoming event</p>
+  <p>Facebook Page: <input id='socialfbpage'class='eventinputs' type="text"></p>
+  <p>Photo Album: <input id='socialalbum' class='eventinputs' type="text"></p>
+  <p>Location: <input id='socialmaps' class='eventinputs' type="text"></p>
+  <a id='socialsubmit' href='javascript:;'><div class='eventsubmits'>Submit</div></a>
+</form>
+
 </div>
-<div id='autumneditdash'>
+
+
+
+<div class='editdash' id='midnighteditdash'>
+
+<form id='midnightediting'>
+<p>Description:</p>
+<p><textarea class='eventinputs' id='midnightd' rows="4" cols="50" form='midnightediting'>
+</textarea></p>
+  <p><input id='midnightpassed' class ='passedcheck' name='eventstatus' type="checkbox"> Passed event
+  <input id='midnightcoming' class ='upcheck' name='eventstatus' type="checkbox"> Upcoming event</p>
+  <p>Facebook Page: <input id='midnightfbpage'class='eventinputs' type="text"></p>
+  <p>Photo Album: <input id='midnightalbum' class='eventinputs' type="text"></p>
+  <p>Location: <input id='midnightmaps' class='eventinputs' type="text"></p>
+  <a id='midnightsubmit' href='javascript:;'><div class='eventsubmits'>Submit</div></a>
+</form>
+
+
 </div>
-<div id='semieditdash'>
+
+<div class='editdash' id='autumneditdash'>
+
+<form id='autumnediting'>
+<p>Description:</p>
+<p><textarea class='eventinputs' id='autumnd' rows="4" cols="50" form='autumnediting'>
+</textarea></p>
+  <p><input id='autumnpassed' class ='passedcheck' name='eventstatus' type="checkbox"> Passed event
+  <input id='autumncoming' class ='upcheck' name='eventstatus' type="checkbox"> Upcoming event</p>
+  <p>Facebook Page: <input id='autumnfbpage'class='eventinputs' type="text"></p>
+  <p>Photo Album: <input id='autumnalbum' class='eventinputs' type="text"></p>
+  <p>Location: <input id='autumnmaps' class='eventinputs' type="text"></p>
+  <a id='autumnsubmit' href='javascript:;'><div class='eventsubmits'>Submit</div></a>
+</form>
+
 </div>
-<div id='lnyeditdash'>
+
+<div class='editdash' id='semieditdash'>
+
+<form id='semiediting'>
+<p>Description:</p>
+<p><textarea class='eventinputs' id='semid' rows="4" cols="50" form='semiediting'>
+</textarea></p>
+  <p><input id='semipassed' class ='passedcheck' name='eventstatus' type="checkbox"> Passed event
+  <input id='semicoming' class ='upcheck' name='eventstatus' type="checkbox"> Upcoming event</p>
+  <p>Facebook Page: <input id='semifbpage'class='eventinputs' type="text"></p>
+  <p>Photo Album: <input id='semialbum' class='eventinputs' type="text"></p>
+  <p>Location: <input id='semimaps' class='eventinputs' type="text"></p>
+  <a id='semisubmit' href='javascript:;'><div class='eventsubmits'>Submit</div></a>
+</form>
+
 </div>
-<div id='chinaeditdash'>
+
+<div class='editdash' id='lnyeditdash'>
+
+<form id='lunarediting'>
+<p>Description:</p>
+<p><textarea class='eventinputs' id='lunard' rows="4" cols="50" form='lunarediting'>
+</textarea></p>
+  <p><input id='lunarpassed' class ='passedcheck' name='eventstatus' type="checkbox"> Passed event
+  <input id='lunarcoming' class ='upcheck' name='eventstatus' type="checkbox"> Upcoming event</p>
+  <p>Facebook Page: <input id='lunarfbpage'class='eventinputs' type="text"></p>
+  <p>Photo Album: <input id='lunaralbum' class='eventinputs' type="text"></p>
+  <p>Location: <input id='lunarmaps' class='eventinputs' type="text"></p>
+  <a id='lunarsubmit' href='javascript:;'><div class='eventsubmits'>Submit</div></a>
+</form>
+
 </div>
+
+<div class='editdash' id='chinaeditdash'>
+
+<form id='chinaediting'>
+<p>Description:</p>
+<p><textarea class='eventinputs' id='chinad' rows="4" cols="50" form='chinaediting'>
+</textarea></p>
+  <p><input id='chinapassed' class ='passedcheck' name='eventstatus' type="checkbox"> Passed event
+  <input id='chinacoming' class ='upcheck' name='eventstatus' type="checkbox"> Upcoming event</p>
+  <p>Facebook Page: <input id='chinafbpage'class='eventinputs' type="text"></p>
+  <p>Photo Album: <input id='chinaalbum' class='eventinputs' type="text"></p>
+  <p>Location: <input id='chinamaps' class='eventinputs' type="text"></p>
+  <a id='chinasubmit' href='javascript:;'><div class='eventsubmits'>Submit</div></a>
+</form>
+
 </div>
+
 </div>
+
 
 
 
