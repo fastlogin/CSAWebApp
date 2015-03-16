@@ -53,6 +53,9 @@ a:hover, a:visited, a:link, a:active
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 
 #splashtext{
@@ -656,10 +659,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f7f7', end
 }
 
 #instruct{
-	font-size: 14px;
+	font-size: 18px;
 	font-family: Open Sans;
 	color: rgb(220,85,120);
-	margin-top: 35px;
+	margin-top: 25px;
+	margin-bottom: 25px;
 }
 
 #wrong{
@@ -763,6 +767,60 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f7f7', end
 #eventdash{
 	display: none;
 	text-align: center;
+}
+
+#famedittext{
+	display: none;
+}
+
+#famoptions{
+	display: none;
+}
+
+.famedits{
+	font-size: 14px;
+	text-align: center;
+}
+
+.famsubmits{
+	background-color: rgb(220,85,120);
+	color: white;
+	width: 100px;
+	padding: 5px;
+	border-radius: 10px;
+	text-align: center;
+}
+
+.famedits{
+	display: none;
+}
+
+#success{
+	display: none;
+	margin-top: 10px;
+	font-size: 28px;
+	font-family: Open Sans;
+	font-weight: 700;
+	color: rgb(220,85,120);
+}
+
+#announcedash{
+	font-size: 18px;
+	display: none;
+}
+
+#announceedittext{
+	display: none;
+}
+
+.loginpage{
+	font-size: 20px;
+}
+
+#ebbutton{
+	font-size: 24px;
+	padding: 5px;
+	font-family: Raleway;
 }
 
 @media(max-width: 1200px){

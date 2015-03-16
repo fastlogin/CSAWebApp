@@ -1,4 +1,10 @@
-
+function convertArray(input){
+  var result = input[0];
+  for(var i = 1; i < input.length; i++){
+    result += (", " + input[i])
+  }
+  return result;
+}
 
 function eventCondition(bool){
   if(bool) return "Passed"
@@ -25,6 +31,89 @@ $(document).ready(function(){
   var animating = false;
   var current;
   var currenttext;
+
+  $('#announcedashclick').click(function(){
+    if(!animating){
+    animating = true;
+    $('#welcometext').fadeToggle(500,function(){
+      $('#dashback').fadeToggle(300);
+      $('#announceedittext').fadeToggle(300, function(){
+        animating = false;
+      });
+      currenttext = $('#announceedittext')
+    });
+    $('#dash').slideToggle(500, function(){
+      $('#announcedash').slideToggle(300);
+      current = $('#announcedash');
+    });
+   }
+  })
+
+  $('#famdashclick').click(function(){
+    if(!animating){
+    animating = true;
+    $('#welcometext').fadeToggle(500,function(){
+      $('#dashback').fadeToggle(300);
+      $('#famedittext').fadeToggle(300, function(){
+        animating = false;
+      });
+      currenttext = $('#famedittext')
+    });
+    $('#dash').slideToggle(500, function(){
+      $('#famoptions').slideToggle(300);
+      current = $('#famoptions');
+    });
+   }
+  })
+
+  $('#juiceedit').click(function(){
+    if(!animating){
+      animating = true;
+    $('#famoptions').fadeToggle(500, function(){
+      $('#juiceeditdash').fadeToggle(300, function(){
+        animating = false;
+      });
+      current = $('#juiceeditdash');
+    });
+    }
+  });
+
+  $('#yellowedit').click(function(){
+    if(!animating){
+      animating = true;
+    $('#famoptions').fadeToggle(500, function(){
+      $('#yelloweditdash').fadeToggle(300, function(){
+        animating = false;
+      });
+      current = $('#yelloweditdash');
+    });
+    }
+  });
+
+  $('#kellyedit').click(function(){
+    if(!animating){
+      animating = true;
+    $('#famoptions').fadeToggle(500, function(){
+      $('#kellyeditdash').fadeToggle(300, function(){
+        animating = false;
+      });
+      current = $('#kellyeditdash');
+    });
+    }
+  });
+
+  $('#nancyedit').click(function(){
+    if(!animating){
+      animating = true;
+    $('#famoptions').fadeToggle(500, function(){
+      $('#nancyeditdash').fadeToggle(300, function(){
+        animating = false;
+      });
+      current = $('#nancyeditdash');
+    });
+    }
+  });
+
   $('#eventdashclick').click(function(){
     if(!animating){
     animating = true;
@@ -131,6 +220,319 @@ $(document).ready(function(){
 })
 
 $(document).ready(function(){
+  $('#announcesubmit').click(function(){
+    $.get('/announcement', {poster: $('#announcename').val(), content: $('#announcement').val()});
+    $('#success').slideToggle(500).delay(1000).slideToggle(500);
+  });
+})
+
+$(document).ready(function(){
+  $.get('/familiesInitJuice', function(data){
+    var result = jQuery.parseJSON(data);
+    $('#juiceonehead').val(convertArray(result.array[0].heads));
+    $('#juiceonemembers').val(convertArray(result.array[0].members));
+    $('#juiceonepoints').val(result.array[0].points);
+
+    $('#juicetwohead').val(convertArray(result.array[1].heads));
+    $('#juicetwomembers').val(convertArray(result.array[1].members));
+    $('#juicetwopoints').val(result.array[1].points);
+
+    $('#juicethreehead').val(convertArray(result.array[2].heads));
+    $('#juicethreemembers').val(convertArray(result.array[2].members));
+    $('#juicethreepoints').val(result.array[2].points);
+
+    $('#juicefourhead').val(convertArray(result.array[3].heads));
+    $('#juicefourmembers').val(convertArray(result.array[3].members));
+    $('#juicefourpoints').val(result.array[3].points);
+
+    $('#juicefivehead').val(convertArray(result.array[4].heads));
+    $('#juicefivemembers').val(convertArray(result.array[4].members));
+    $('#juicefivepoints').val(result.array[4].points);
+
+    $('#juicesixhead').val(convertArray(result.array[5].heads));
+    $('#juicesixmembers').val(convertArray(result.array[5].members));
+    $('#juicesixpoints').val(result.array[5].points);
+
+    $('#juicesevenhead').val(convertArray(result.array[6].heads));
+    $('#juicesevenmembers').val(convertArray(result.array[6].members));
+    $('#juicesevenpoints').val(result.array[6].points);
+  });
+
+  $('#juiceonesubmit').click(function(){
+    $.get('/familiesEditJuiceOne', {heads: $('#juiceonehead').val(), members:$('#juiceonemembers').val(), points: parseInt($('#juiceonepoints').val())}, function(data){
+    });
+    $('#success').slideToggle(500).delay(1000).slideToggle(500);
+  });
+
+  $('#juicetwosubmit').click(function(){
+    $.get('/familiesEditJuiceTwo', {heads: $('#juicetwohead').val(), members:$('#juicetwomembers').val(), points: parseInt($('#juicetwopoints').val())}, function(data){
+    });
+    $('#success').slideToggle(500).delay(1000).slideToggle(500);
+  });
+
+  $('#juicethreesubmit').click(function(){
+    $.get('/familiesEditJuiceThree', {heads: $('#juicethreehead').val(), members:$('#juicethreemembers').val(), points: parseInt($('#juicethreepoints').val())}, function(data){
+    })
+    $('#success').slideToggle(500).delay(1000).slideToggle(500);
+  });
+
+  $('#juicefoursubmit').click(function(){
+    $.get('/familiesEditJuiceFour', {heads: $('#juicefourhead').val(), members:$('#juicefourmembers').val(), points: parseInt($('#juicefourpoints').val())}, function(data){
+    })
+    $('#success').slideToggle(500).delay(1000).slideToggle(500);
+  });
+
+  $('#juicefivesubmit').click(function(){
+    $.get('/familiesEditJuiceFive', {heads: $('#juicefivehead').val(), members:$('#juicefivemembers').val(), points: parseInt($('#juicefivepoints').val())}, function(data){
+    })
+    $('#success').slideToggle(500).delay(1000).slideToggle(500);
+  });
+
+  $('#juicesixsubmit').click(function(){
+    $.get('/familiesEditJuiceSix', {heads: $('#juicesixhead').val(), members:$('#juicesixmembers').val(), points: parseInt($('#juicesixpoints').val())}, function(data){
+    })
+    $('#success').slideToggle(500).delay(1000).slideToggle(500);
+  });
+
+  $('#juicesevensubmit').click(function(){
+    $.get('/familiesEditJuiceSeven', {heads: $('#juicesevenhead').val(), members:$('#juicesevenmembers').val(), points: parseInt($('#juicesevenpoints').val())}, function(data){
+    })
+    $('#success').slideToggle(500).delay(1000).slideToggle(500);
+  });
+
+})
+
+$(document).ready(function(){
+  $.get('/familiesInitYellow', function(data){
+    var result = jQuery.parseJSON(data);
+    $('#yellowonehead').val(convertArray(result.array[0].heads));
+    $('#yellowonemembers').val(convertArray(result.array[0].members));
+    $('#yellowonepoints').val(result.array[0].points);
+
+    $('#yellowtwohead').val(convertArray(result.array[1].heads));
+    $('#yellowtwomembers').val(convertArray(result.array[1].members));
+    $('#yellowtwopoints').val(result.array[1].points);
+
+    $('#yellowthreehead').val(convertArray(result.array[2].heads));
+    $('#yellowthreemembers').val(convertArray(result.array[2].members));
+    $('#yellowthreepoints').val(result.array[2].points);
+
+    $('#yellowfourhead').val(convertArray(result.array[3].heads));
+    $('#yellowfourmembers').val(convertArray(result.array[3].members));
+    $('#yellowfourpoints').val(result.array[3].points);
+
+    $('#yellowfivehead').val(convertArray(result.array[4].heads));
+    $('#yellowfivemembers').val(convertArray(result.array[4].members));
+    $('#yellowfivepoints').val(result.array[4].points);
+
+    $('#yellowsixhead').val(convertArray(result.array[5].heads));
+    $('#yellowsixmembers').val(convertArray(result.array[5].members));
+    $('#yellowsixpoints').val(result.array[5].points);
+
+    $('#yellowsevenhead').val(convertArray(result.array[6].heads));
+    $('#yellowsevenmembers').val(convertArray(result.array[6].members));
+    $('#yellowsevenpoints').val(result.array[6].points);
+  });
+
+  $('#yellowonesubmit').click(function(){
+    $.get('/familiesEditYellowOne', {heads: $('#yellowonehead').val(), members:$('#yellowonemembers').val(), points: parseInt($('#yellowonepoints').val())}, function(data){
+    })
+    $('#success').slideToggle(500).delay(1000).slideToggle(500);
+  });
+
+  $('#yellowtwosubmit').click(function(){
+    $.get('/familiesEditYellowTwo', {heads: $('#yellowtwohead').val(), members:$('#yellowtwomembers').val(), points: parseInt($('#yellowtwopoints').val())}, function(data){
+    })
+    $('#success').slideToggle(500).delay(1000).slideToggle(500);
+  });
+
+  $('#yellowthreesubmit').click(function(){
+    $.get('/familiesEditYellowThree', {heads: $('#yellowthreehead').val(), members:$('#yellowthreemembers').val(), points: parseInt($('#yellowthreepoints').val())}, function(data){
+    })
+    $('#success').slideToggle(500).delay(1000).slideToggle(500);
+  });
+
+  $('#yellowfoursubmit').click(function(){
+    $.get('/familiesEditYellowFour', {heads: $('#yellowfourhead').val(), members:$('#yellowfourmembers').val(), points: parseInt($('#yellowfourpoints').val())}, function(data){
+    })
+    $('#success').slideToggle(500).delay(1000).slideToggle(500);
+  });
+
+  $('#yellowfivesubmit').click(function(){
+    $.get('/familiesEditYellowFive', {heads: $('#yellowfivehead').val(), members:$('#yellowfivemembers').val(), points: parseInt($('#yellowfivepoints').val())}, function(data){
+    })
+    $('#success').slideToggle(500).delay(1000).slideToggle(500);
+  });
+
+  $('#yellowsixsubmit').click(function(){
+    $.get('/familiesEditYellowSix', {heads: $('#yellowsixhead').val(), members:$('#yellowsixmembers').val(), points: parseInt($('#yellowsixpoints').val())}, function(data){
+    })
+    $('#success').slideToggle(500).delay(1000).slideToggle(500);
+  });
+
+  $('#yellowsevensubmit').click(function(){
+    $.get('/familiesEditYellowSeven', {heads: $('#yellowsevenhead').val(), members:$('#yellowsevenmembers').val(), points: parseInt($('#yellowsevenpoints').val())}, function(data){
+    })
+    $('#success').slideToggle(500).delay(1000).slideToggle(500);
+  });
+
+})
+
+$(document).ready(function(){
+  $.get('/familiesInitKelly', function(data){
+    var result = jQuery.parseJSON(data);
+    $('#kellyonehead').val(convertArray(result.array[0].heads));
+    $('#kellyonemembers').val(convertArray(result.array[0].members));
+    $('#kellyonepoints').val(result.array[0].points);
+
+    $('#kellytwohead').val(convertArray(result.array[1].heads));
+    $('#kellytwomembers').val(convertArray(result.array[1].members));
+    $('#kellytwopoints').val(result.array[1].points);
+
+    $('#kellythreehead').val(convertArray(result.array[2].heads));
+    $('#kellythreemembers').val(convertArray(result.array[2].members));
+    $('#kellythreepoints').val(result.array[2].points);
+
+    $('#kellyfourhead').val(convertArray(result.array[3].heads));
+    $('#kellyfourmembers').val(convertArray(result.array[3].members));
+    $('#kellyfourpoints').val(result.array[3].points);
+
+    $('#kellyfivehead').val(convertArray(result.array[4].heads));
+    $('#kellyfivemembers').val(convertArray(result.array[4].members));
+    $('#kellyfivepoints').val(result.array[4].points);
+
+    $('#kellysixhead').val(convertArray(result.array[5].heads));
+    $('#kellysixmembers').val(convertArray(result.array[5].members));
+    $('#kellysixpoints').val(result.array[5].points);
+
+    $('#kellysevenhead').val(convertArray(result.array[6].heads));
+    $('#kellysevenmembers').val(convertArray(result.array[6].members));
+    $('#kellysevenpoints').val(result.array[6].points);
+  });
+
+  $('#kellyonesubmit').click(function(){
+    $.get('/familiesEditKellyOne', {heads: $('#kellyonehead').val(), members:$('#kellyonemembers').val(), points: parseInt($('#kellyonepoints').val())}, function(data){
+    })
+    $('#success').slideToggle(500).delay(1000).slideToggle(500);
+  });
+
+  $('#kellytwosubmit').click(function(){
+    $.get('/familiesEditKellyTwo', {heads: $('#kellytwohead').val(), members:$('#kellytwomembers').val(), points: parseInt($('#kellytwopoints').val())}, function(data){
+    })
+    $('#success').slideToggle(500).delay(1000).slideToggle(500);
+  });
+
+  $('#kellythreesubmit').click(function(){
+    $.get('/familiesEditKellyThree', {heads: $('#kellythreehead').val(), members:$('#kellythreemembers').val(), points: parseInt($('#kellythreepoints').val())}, function(data){
+    })
+    $('#success').slideToggle(500).delay(1000).slideToggle(500);
+  });
+
+  $('#kellyfoursubmit').click(function(){
+    $.get('/familiesEditKellyFour', {heads: $('#kellyfourhead').val(), members:$('#kellyfourmembers').val(), points: parseInt($('#kellyfourpoints').val())}, function(data){
+    })
+    $('#success').slideToggle(500).delay(1000).slideToggle(500);
+  });
+
+  $('#kellyfivesubmit').click(function(){
+    $.get('/familiesEditKellyFive', {heads: $('#kellyfivehead').val(), members:$('#kellyfivemembers').val(), points: parseInt($('#kellyfivepoints').val())}, function(data){
+    })
+    $('#success').slideToggle(500).delay(1000).slideToggle(500);
+  });
+
+  $('#kellysixsubmit').click(function(){
+    $.get('/familiesEditKellySix', {heads: $('#kellysixhead').val(), members:$('#kellysixmembers').val(), points: parseInt($('#kellysixpoints').val())}, function(data){
+    })
+    $('#success').slideToggle(500).delay(1000).slideToggle(500);
+  });
+
+  $('#kellysevensubmit').click(function(){
+    $.get('/familiesEditKellySeven', {heads: $('#kellysevenhead').val(), members:$('#kellysevenmembers').val(), points: parseInt($('#kellysevenpoints').val())}, function(data){
+    })
+    $('#success').slideToggle(500).delay(1000).slideToggle(500);
+  });
+
+})
+
+$(document).ready(function(){
+  $.get('/familiesInitNancy', function(data){
+    var result = jQuery.parseJSON(data);
+    $('#nancyonehead').val(convertArray(result.array[0].heads));
+    $('#nancyonemembers').val(convertArray(result.array[0].members));
+    $('#nancyonepoints').val(result.array[0].points);
+
+    $('#nancytwohead').val(convertArray(result.array[1].heads));
+    $('#nancytwomembers').val(convertArray(result.array[1].members));
+    $('#nancytwopoints').val(result.array[1].points);
+
+    $('#nancythreehead').val(convertArray(result.array[2].heads));
+    $('#nancythreemembers').val(convertArray(result.array[2].members));
+    $('#nancythreepoints').val(result.array[2].points);
+
+    $('#nancyfourhead').val(convertArray(result.array[3].heads));
+    $('#nancyfourmembers').val(convertArray(result.array[3].members));
+    $('#nancyfourpoints').val(result.array[3].points);
+
+    $('#nancyfivehead').val(convertArray(result.array[4].heads));
+    $('#nancyfivemembers').val(convertArray(result.array[4].members));
+    $('#nancyfivepoints').val(result.array[4].points);
+
+    $('#nancysixhead').val(convertArray(result.array[5].heads));
+    $('#nancysixmembers').val(convertArray(result.array[5].members));
+    $('#nancysixpoints').val(result.array[5].points);
+
+    $('#nancysevenhead').val(convertArray(result.array[6].heads));
+    $('#nancysevenmembers').val(convertArray(result.array[6].members));
+    $('#nancysevenpoints').val(result.array[6].points);
+  });
+
+  $('#nancyonesubmit').click(function(){
+    $.get('/familiesEditNancyOne', {heads: $('#nancyonehead').val(), members:$('#nancyonemembers').val(), points: parseInt($('#nancyonepoints').val())}, function(data){
+    })
+    $('#success').slideToggle(500).delay(1000).slideToggle(500);
+  });
+
+  $('#nancytwosubmit').click(function(){
+    $.get('/familiesEditNancyTwo', {heads: $('#nancytwohead').val(), members:$('#nancytwomembers').val(), points: parseInt($('#nancytwopoints').val())}, function(data){
+    })
+    $('#success').slideToggle(500).delay(1000).slideToggle(500);
+  });
+
+  $('#nancythreesubmit').click(function(){
+    $.get('/familiesEditNancyThree', {heads: $('#nancythreehead').val(), members:$('#nancythreemembers').val(), points: parseInt($('#nancythreepoints').val())}, function(data){
+    })
+    $('#success').slideToggle(500).delay(1000).slideToggle(500);
+  });
+
+  $('#nancyfoursubmit').click(function(){
+    $.get('/familiesEditNancyFour', {heads: $('#nancyfourhead').val(), members:$('#nancyfourmembers').val(), points: parseInt($('#nancyfourpoints').val())}, function(data){
+    })
+    $('#success').slideToggle(500).delay(1000).slideToggle(500);
+  });
+
+  $('#nancyfivesubmit').click(function(){
+    $.get('/familiesEditNancyFive', {heads: $('#nancyfivehead').val(), members:$('#nancyfivemembers').val(), points: parseInt($('#nancyfivepoints').val())}, function(data){
+    })
+    $('#success').slideToggle(500).delay(1000).slideToggle(500);
+  });
+
+  $('#nancysixsubmit').click(function(){
+    $.get('/familiesEditNancySix', {heads: $('#nancysixhead').val(), members:$('#nancysixmembers').val(), points: parseInt($('#nancysixpoints').val())}, function(data){
+    })
+    $('#success').slideToggle(500).delay(1000).slideToggle(500);
+  });
+
+  $('#nancysevensubmit').click(function(){
+    $.get('/familiesEditNancySeven', {heads: $('#nancysevenhead').val(), members:$('#nancysevenmembers').val(), points: parseInt($('#nancysevenpoints').val())}, function(data){
+    })
+    $('#success').slideToggle(500).delay(1000).slideToggle(500);
+  });
+
+})
+
+
+
+$(document).ready(function(){
 
   $.get('/eventsInitSocial', function(data){
     var result = jQuery.parseJSON(data);
@@ -157,8 +559,8 @@ $(document).ready(function(){
 
   $('#socialsubmit').click(function(){
       $.get('/eventsEditSocial',{passed: $('#socialpassed').checked, description: $('#sociald').val(), page: $('#socialfbpage').val(), album: $('#socialalbum').val(), maps:$('#socialmaps').val()}, function(data){
-        console.log('fornow');
       });
+      $('#success').slideToggle(500).delay(1000).slideToggle(500);
   });
 
   $.get('/eventsInitMidnight', function(data){
@@ -186,8 +588,8 @@ $(document).ready(function(){
 
   $('#midnightsubmit').click(function(){
       $.get('/eventsEditMidnight',{passed: $('#midnightpassed').checked, description: $('#midnightd').val(), page: $('#midnightfbpage').val(), album: $('#midnightalbum').val(), maps:$('#midnightmaps').val()}, function(data){
-        console.log('fornow');
       });
+      $('#success').slideToggle(500).delay(1000).slideToggle(500);
   });
 
   $.get('/eventsInitAutumn', function(data){
@@ -215,8 +617,8 @@ $(document).ready(function(){
 
   $('#autumnsubmit').click(function(){
       $.get('/eventsEditAutumn',{passed: $('#autumnpassed').checked, description: $('#autumnd').val(), page: $('#autumnfbpage').val(), album: $('#autumnalbum').val(), maps:$('#autumnmaps').val()}, function(data){
-        console.log('fornow');
       });
+      $('#success').slideToggle(500).delay(1000).slideToggle(500);
   });
 
   $.get('/eventsInitSemi', function(data){
@@ -244,8 +646,8 @@ $(document).ready(function(){
 
   $('#semisubmit').click(function(){
       $.get('/eventsEditSemi',{passed: $('#semipassed').checked, description: $('#semid').val(), page: $('#semifbpage').val(), album: $('#semialbum').val(), maps:$('#semimaps').val()}, function(data){
-        console.log('fornow');
       });
+      $('#success').slideToggle(500).delay(1000).slideToggle(500);
   });
 
   $.get('/eventsInitLunar', function(data){
@@ -273,8 +675,8 @@ $(document).ready(function(){
 
   $('#lunarsubmit').click(function(){
       $.get('/eventsEditLunar',{passed: $('#lunarpassed').checked, description: $('#lunard').val(), page: $('#lunarfbpage').val(), album: $('#lunaralbum').val(), maps:$('#lunarmaps').val()}, function(data){
-        console.log('fornow');
       });
+      $('#success').slideToggle(500).delay(1000).slideToggle(500);
   });
 
 $.get('/eventsInitChina', function(data){
@@ -302,8 +704,8 @@ $.get('/eventsInitChina', function(data){
 
   $('#chinasubmit').click(function(){
       $.get('/eventsEditChina',{passed: $('#chinapassed').checked, description: $('#chinad').val(), page: $('#chinafbpage').val(), album: $('#chinaalbum').val(), maps:$('#chinamaps').val()}, function(data){
-        console.log('fornow');
       });
+      $('#success').slideToggle(500).delay(1000).slideToggle(500);
   });
 
 })
@@ -696,21 +1098,20 @@ $(document).ready(function(){
 
  /********************************************/
 $(document).ready(function(){
-  $('#eboardlogin').submit( function(event){
-    if($('input:first').val() == 'erichuang'){
-      $('input:first').val("");
-      $('#instruct').fadeToggle(600);
-      $('#eboardlogin').fadeToggle(600);
-      $('#dashdef').fadeToggle(600, function(){
+  $('#ebbutton').click(function(){
+    $.get('/login', {username: $('#eblogin').val(), password: $('#ebpw').val()}, function(data){
+      if(data == 'success'){
+        $('#instruct').fadeToggle(600);
+        $('#eboardlogin').fadeToggle(600);
+        $('#dashdef').fadeToggle(600, function(){
               $('#dashwelcome').fadeToggle(600);
-      $('#dash').fadeToggle(600);
-      })
-    }
-    else{
-      $('input:first').val("");
-      $('#wrong').slideToggle(500).delay(1500).slideToggle(500);
-    }
-    event.preventDefault();
+        $('#dash').fadeToggle(600);
+        });
+      }
+      else{
+        $('#wrong').slideToggle(500).delay(1000).slideToggle(500);
+      }
+    });
   });
 })
  /********************************************/

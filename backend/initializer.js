@@ -4,6 +4,13 @@ var db = mongoose.connection;
 
 db.once('open',function(){
 
+	var accounts = mongoose.Schema({
+		username: String,
+		password: String,
+	});
+	mongoose.model('Accounts',accounts);
+	var account = mongoose.model('Accounts');
+
 	var announce = mongoose.Schema({
 		posted: String,
 		poster: String,
@@ -56,25 +63,101 @@ db.once('open',function(){
 	mongoose.model('NancysWanton', justJuice);
 	var nancy = mongoose.model('NancysWanton');
 
-	var announceone = new announcements({
-		posted: "3/11/2015",
-		poster: "George Ding",
-		content: "Woo! Initialization works! the website is so close to being finished, thank you everyone for being so patient! :)",
-		comments: ["Nice!","Wow","Awesome"]
+	var georgeacc = new account({
+		username: "fastlogin",
+		password: "lopiklop",
 	});
-	announceone.save(function(err){
+	georgeacc.save(function(err){
 		if(err) throw err;
 	});
 
-	var announcetwo = new announcements({
-		posted: "3/10/2015",
-		poster: "Nancy Wang",
-		content: "1/365 Late night studying in Duffield with friends. Happy Chinese New Year! Super awkward late start to this, but I want to take more pictures and what better way to do it than the 365 day challenge? Expect lots of studying pictures.",
-		comments: ["Nice!","Wow"]
+	var kellyacc = new account({
+		username: "kellyieong",
+		password: "CSA",
 	});
-	announcetwo.save(function(err){
+	kellyacc.save(function(err){
 		if(err) throw err;
-	})
+	});
+
+	var nancywacc = new account({
+		username: "nancy",
+		password: "hello",
+	});
+	nancywacc.save(function(err){
+		if(err) throw err;
+	});
+
+	var diannaacc = new account({
+		username: "diannachen",
+		password: "GeorgeDing",
+	});
+	diannaacc.save(function(err){
+		if(err) throw err;
+	});
+
+	var cynthiaacc = new account({
+		username: "cynthia.chen",
+		password: "wedontdocollabs",
+	});
+	cynthiaacc.save(function(err){
+		if(err) throw err;
+	});
+
+	var willacc = new account({
+		username: "will",
+		password: "huang",
+	});
+	willacc.save(function(err){
+		if(err) throw err;
+	});
+
+	var richardacc = new account({
+		username: "richard",
+		password: "sucksatcsgo",
+	});
+	richardacc.save(function(err){
+		if(err) throw err;
+	});
+
+	var nancyacc = new account({
+		username: "nancy",
+		password: "ding",
+	});
+	nancyacc.save(function(err){
+		if(err) throw err;
+	});
+
+	var christineacc = new account({
+		username: "christine",
+		password: "chu",
+	});
+	christineacc.save(function(err){
+		if(err) throw err;
+	});
+
+	var kevinacc = new account({
+		username: "kevin",
+		password: "notkevin",
+	});
+	kevinacc.save(function(err){
+		if(err) throw err;
+	});
+
+	var yingacc = new account({
+		username: "cornellcsa",
+		password: "binbinfan",
+	});
+	yingacc.save(function(err){
+		if(err) throw err;
+	});
+
+	var alexacc = new account({
+		username: "tsm",
+		password: "tsm",
+	});
+	alexacc.save(function(err){
+		if(err) throw err;
+	});
 
 	var eventone = new csaEvent({
 		name: "Social Week",

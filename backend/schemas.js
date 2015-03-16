@@ -1,5 +1,11 @@
 var db = require('./db');
 
+var accounts = db.mongoose.Schema({
+	username: String,
+	password: String,
+});
+db.mongoose.model('Accounts',accounts);
+
 var announce = db.mongoose.Schema({
 	posted: String,
 	poster: String,
@@ -47,6 +53,7 @@ var nancyWantonJuice = db.mongoose.Schema({
 db.mongoose.model('NancysWanton', justJuice);
 
 module.exports = {
+	account: db.mongoose.model('Accounts'),
 	announcements: db.mongoose.model('Announcements'),
 	csaEvent: db.mongoose.model('Events'),
 	juice: db.mongoose.model('JustJuice'),

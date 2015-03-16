@@ -302,16 +302,29 @@
 <div id='testme' class='row row-centered'>
 <p id='dashwelcome'><span id='welcometext'>Welcome.</span>
     <span id='eventedittext'>Choose an event to edit.</span>
+    <span id='famedittext'>Choose a family to edit.</span>
+    <span id='announceedittext'>Make an announcement.</span>
     <a id='dashback' href='javascript:;'><span class="backbutton glyphicon glyphicon-circle-arrow-left"></span></a>
 </p>
 <span id='dashdef'>The EBoard section is coming soon!</span>
-<div id='dash' class='col-md-12'><a id='eventdashclick' href='javascript:;'><span id='eventcirc' class='glyphicon glyphicon-calendar dashicons'></span></a><a href='javascript:;'><span id='famcirc' class='glyphicon glyphicon-user dashicons'></span></a><a href='javascript:;'><span id='newscirc' class='glyphicon glyphicon-pencil dashicons'></span></a></div>
-<div id='instruct'>In the meantime if you are an Eboard member you can access the dash by entering the secret password!</div>
+<div id='dash' class='col-md-12'><a id='eventdashclick' href='javascript:;'><span id='eventcirc' class='glyphicon glyphicon-calendar dashicons'></span></a><a id='famdashclick' href='javascript:;'><span id='famcirc' class='glyphicon glyphicon-user dashicons'></span></a><a id='announcedashclick' href='javascript:;'><span id='newscirc' class='glyphicon glyphicon-pencil dashicons'></span></a></div>
+<div id='instruct'>In the meantime if you are an Eboard member you can login!</div>
 <form id='eboardlogin'>
-<input type="password" name="pass">
+<p class='loginpage'>Username: <input id='eblogin'type="text"></p>
+<p class='loginpage'>Password: <input id='ebpw' type="password"></p>
+<p><a id='ebbutton' class='famsubmits' href='javascript:;'><span>Login</span></a></p>
 </form>
-<div id='wrong'>Sorry, that's wrong =(.</div>
+<div id='wrong'>Incorrect login info =(.</div>
 
+<div id='announcedash' class='col-md-12 col-centered'>
+    <form>
+        <p>Your Name: <input id='announcename' class='eventinputs' type="text"></p>
+        <p>Announcement:</p> 
+        <p><textarea id='announcement' rows="4" cols="50">
+        </textarea></p>
+        <a id='announcesubmit' href='javascript:;'><div class='eventsubmits'>Submit</div></a>
+    </form>
+</div>
 
 <div id='eventoptions' class='col-md-12 col-centered'>
 <a id='socialedit' href='javascript:;'><p class='eventitems'>Social Week</p></a>
@@ -322,6 +335,272 @@
 <a id='chinaedit' href='javascript:;'><p class='eventitems'>China Night</p></a>
 </div>
 
+<div id='famoptions' class='col-md-12 col-centered'>
+<a id='juiceedit' href='javascript:;'><p class='eventitems'>Just Juice</p></a>
+<a id='yellowedit' href='javascript:;'><p class='eventitems'>Yellow Fellows</p></a>
+<a id='kellyedit' href='javascript:;'><p class='eventitems'>Kelly's Dumplings</p></a>
+<a id='nancyedit' href='javascript:;'><p class='eventitems'>Nancy's Wantons</p></a>
+</div>
+
+<div id='juiceeditdash' class='famedits'>
+<div class='row row-centered'>
+<div class='col-md-4 '>
+    <form>
+        <p>Heads: <input id='juiceonehead' class='eventinputs' type="text"></p>
+        <p>Members: <input id='juiceonemembers' class='eventinputs' type="text"></p>
+        <p>Points: <input id='juiceonepoints' class='eventinputs' type="number"></p>
+    </form>
+    <p><a id='juiceonesubmit' class='famsubmits' href='javascript:;'>Submit</a></p>
+</div>
+<div class='col-md-4 '>
+    <form>
+        <p>Heads: <input id='juicetwohead' class='eventinputs' type="text"></p>
+        <p>Members: <input id='juicetwomembers' class='eventinputs' type="text"></p>
+        <p>Points: <input id='juicetwopoints' class='eventinputs' type="number"></p>
+    </form>
+    <p><a id='juicetwosubmit' class='famsubmits' href='javascript:;'>Submit</a></p>
+</div>
+<div class='col-md-4 '>
+    <form>
+        <p>Heads: <input id='juicethreehead' class='eventinputs' type="text"></p>
+        <p>Members: <input id='juicethreemembers' class='eventinputs' type="text"></p>
+        <p>Points: <input id='juicethreepoints' class='eventinputs' type="number"></p>
+    </form>
+    <p><a id='juicethreesubmit' class='famsubmits' href='javascript:;'>Submit</a></p>
+</div>
+
+</div>
+
+<div class='row row-centered'>
+<div class='col-md-3 '>
+    <form>
+        <p>Heads: <input id='juicefourhead' class='eventinputs' type="text"></p>
+        <p>Members: <input id='juicefourmembers' class='eventinputs' type="text"></p>
+        <p>Points: <input id='juicefourpoints' class='eventinputs' type="number"></p>
+    </form>
+    <p><a id='juicefoursubmit' class='famsubmits' href='javascript:;'>Submit</a></p>
+</div>
+<div class='col-md-3 '>
+    <form>
+        <p>Heads: <input id='juicefivehead' class='eventinputs' type="text"></p>
+        <p>Members: <input id='juicefivemembers' class='eventinputs' type="text"></p>
+        <p>Points: <input id='juicefivepoints' class='eventinputs' type="number"></p>
+    </form>
+    <p><a id='juicefivesubmit' class='famsubmits' href='javascript:;'>Submit</a></p>
+</div>
+<div class='col-md-3 '>
+    <form>
+        <p>Heads: <input id='juicesixhead' class='eventinputs' type="text"></p>
+        <p>Members: <input id='juicesixmembers' class='eventinputs' type="text"></p>
+        <p>Points: <input id='juicesixpoints' class='eventinputs' type="number"></p>
+    </form>
+    <p><a id='juicesixsubmit' class='famsubmits' href='javascript:;'>Submit</a></p>
+</div>
+<div class='col-md-3 '>
+    <form>
+        <p>Heads: <input id='juicesevenhead' class='eventinputs' type="text"></p>
+        <p>Members: <input id='juicesevenmembers' class='eventinputs' type="text"></p>
+        <p>Points: <input id='juicesevenpoints' class='eventinputs' type="number"></p>
+    </form>
+    <p><a id='juicesevensubmit' class='famsubmits' href='javascript:;'>Submit</a></p>
+</div>
+</div>
+</div>
+
+<div id='yelloweditdash' class='famedits'>
+<div class='row row-centered'>
+<div class='col-md-4 '>
+    <form>
+        <p>Heads: <input id='yellowonehead' class='eventinputs' type="text"></p>
+        <p>Members: <input id='yellowonemembers' class='eventinputs' type="text"></p>
+        <p>Points: <input id='yellowonepoints' class='eventinputs' type="number"></p>
+    </form>
+    <p><a id='yellowonesubmit' class='famsubmits' href='javascript:;'>Submit</a></p>
+</div>
+<div class='col-md-4 '>
+    <form>
+        <p>Heads: <input id='yellowtwohead' class='eventinputs' type="text"></p>
+        <p>Members: <input id='yellowtwomembers' class='eventinputs' type="text"></p>
+        <p>Points: <input id='yellowtwopoints' class='eventinputs' type="number"></p>
+    </form>
+    <p><a id='yellowtwosubmit' class='famsubmits' href='javascript:;'>Submit</a></p>
+</div>
+<div class='col-md-4 '>
+    <form>
+        <p>Heads: <input id='yellowthreehead' class='eventinputs' type="text"></p>
+        <p>Members: <input id='yellowthreemembers' class='eventinputs' type="text"></p>
+        <p>Points: <input id='yellowthreepoints' class='eventinputs' type="number"></p>
+    </form>
+    <p><a id='yellowthreesubmit' class='famsubmits' href='javascript:;'>Submit</a></p>
+</div>
+
+</div>
+
+<div class='row row-centered'>
+<div class='col-md-3 '>
+    <form>
+        <p>Heads: <input id='yellowfourhead' class='eventinputs' type="text"></p>
+        <p>Members: <input id='yellowfourmembers' class='eventinputs' type="text"></p>
+        <p>Points: <input id='yellowfourpoints' class='eventinputs' type="number"></p>
+    </form>
+    <p><a id='yellowfoursubmit' class='famsubmits' href='javascript:;'>Submit</a></p>
+</div>
+<div class='col-md-3 '>
+    <form>
+        <p>Heads: <input id='yellowfivehead' class='eventinputs' type="text"></p>
+        <p>Members: <input id='yellowfivemembers' class='eventinputs' type="text"></p>
+        <p>Points: <input id='yellowfivepoints' class='eventinputs' type="number"></p>
+    </form>
+    <p><a id='yellowfivesubmit' class='famsubmits' href='javascript:;'>Submit</a></p>
+</div>
+<div class='col-md-3 '>
+    <form>
+        <p>Heads: <input id='yellowsixhead' class='eventinputs' type="text"></p>
+        <p>Members: <input id='yellowsixmembers' class='eventinputs' type="text"></p>
+        <p>Points: <input id='yellowsixpoints' class='eventinputs' type="number"></p>
+    </form>
+    <p><a id='yellowsixsubmit' class='famsubmits' href='javascript:;'>Submit</a></p>
+</div>
+<div class='col-md-3 '>
+    <form>
+        <p>Heads: <input id='yellowsevenhead' class='eventinputs' type="text"></p>
+        <p>Members: <input id='yellowsevenmembers' class='eventinputs' type="text"></p>
+        <p>Points: <input id='yellowsevenpoints' class='eventinputs' type="number"></p>
+    </form>
+    <p><a id='yellowsevensubmit' class='famsubmits' href='javascript:;'>Submit</a></p>
+</div>
+</div>
+</div>
+
+<div id='kellyeditdash' class='famedits'>
+<div class='row row-centered'>
+<div class='col-md-4 '>
+    <form>
+        <p>Heads: <input id='kellyonehead' class='eventinputs' type="text"></p>
+        <p>Members: <input id='kellyonemembers' class='eventinputs' type="text"></p>
+        <p>Points: <input id='kellyonepoints' class='eventinputs' type="number"></p>
+    </form>
+    <p><a id='kellyonesubmit' class='famsubmits' href='javascript:;'>Submit</a></p>
+</div>
+<div class='col-md-4 '>
+    <form>
+        <p>Heads: <input id='kellytwohead' class='eventinputs' type="text"></p>
+        <p>Members: <input id='kellytwomembers' class='eventinputs' type="text"></p>
+        <p>Points: <input id='kellytwopoints' class='eventinputs' type="number"></p>
+    </form>
+    <p><a id='kellytwosubmit' class='famsubmits' href='javascript:;'>Submit</a></p>
+</div>
+<div class='col-md-4 '>
+    <form>
+        <p>Heads: <input id='kellythreehead' class='eventinputs' type="text"></p>
+        <p>Members: <input id='kellythreemembers' class='eventinputs' type="text"></p>
+        <p>Points: <input id='kellythreepoints' class='eventinputs' type="number"></p>
+    </form>
+    <p><a id='kellythreesubmit' class='famsubmits' href='javascript:;'>Submit</a></p>
+</div>
+
+</div>
+
+<div class='row row-centered'>
+<div class='col-md-3 '>
+    <form>
+        <p>Heads: <input id='kellyfourhead' class='eventinputs' type="text"></p>
+        <p>Members: <input id='kellyfourmembers' class='eventinputs' type="text"></p>
+        <p>Points: <input id='kellyfourpoints' class='eventinputs' type="number"></p>
+    </form>
+    <p><a id='kellyfoursubmit' class='famsubmits' href='javascript:;'>Submit</a></p>
+</div>
+<div class='col-md-3 '>
+    <form>
+        <p>Heads: <input id='kellyfivehead' class='eventinputs' type="text"></p>
+        <p>Members: <input id='kellyfivemembers' class='eventinputs' type="text"></p>
+        <p>Points: <input id='kellyfivepoints' class='eventinputs' type="number"></p>
+    </form>
+    <p><a id='kellyfivesubmit' class='famsubmits' href='javascript:;'>Submit</a></p>
+</div>
+<div class='col-md-3 '>
+    <form>
+        <p>Heads: <input id='kellysixhead' class='eventinputs' type="text"></p>
+        <p>Members: <input id='kellysixmembers' class='eventinputs' type="text"></p>
+        <p>Points: <input id='kellysixpoints' class='eventinputs' type="number"></p>
+    </form>
+    <p><a id='kellysixsubmit' class='famsubmits' href='javascript:;'>Submit</a></p>
+</div>
+<div class='col-md-3 '>
+    <form>
+        <p>Heads: <input id='kellysevenhead' class='eventinputs' type="text"></p>
+        <p>Members: <input id='kellysevenmembers' class='eventinputs' type="text"></p>
+        <p>Points: <input id='kellysevenpoints' class='eventinputs' type="number"></p>
+    </form>
+    <p><a id='kellysevensubmit' class='famsubmits' href='javascript:;'>Submit</a></p>
+</div>
+</div>
+</div>
+
+<div id='nancyeditdash' class='famedits'>
+<div class='row row-centered'>
+<div class='col-md-4 '>
+    <form>
+        <p>Heads: <input id='nancyonehead' class='eventinputs' type="text"></p>
+        <p>Members: <input id='nancyonemembers' class='eventinputs' type="text"></p>
+        <p>Points: <input id='nancyonepoints' class='eventinputs' type="number"></p>
+    </form>
+    <p><a id='nancyonesubmit' class='famsubmits' href='javascript:;'>Submit</a></p>
+</div>
+<div class='col-md-4 '>
+    <form>
+        <p>Heads: <input id='nancytwohead' class='eventinputs' type="text"></p>
+        <p>Members: <input id='nancytwomembers' class='eventinputs' type="text"></p>
+        <p>Points: <input id='nancytwopoints' class='eventinputs' type="number"></p>
+    </form>
+    <p><a id='nancytwosubmit' class='famsubmits' href='javascript:;'>Submit</a></p>
+</div>
+<div class='col-md-4 '>
+    <form>
+        <p>Heads: <input id='nancythreehead' class='eventinputs' type="text"></p>
+        <p>Members: <input id='nancythreemembers' class='eventinputs' type="text"></p>
+        <p>Points: <input id='nancythreepoints' class='eventinputs' type="number"></p>
+    </form>
+    <p><a id='nancythreesubmit' class='famsubmits' href='javascript:;'>Submit</a></p>
+</div>
+
+</div>
+
+<div class='row row-centered'>
+<div class='col-md-3 '>
+    <form>
+        <p>Heads: <input id='nancyfourhead' class='eventinputs' type="text"></p>
+        <p>Members: <input id='nancyfourmembers' class='eventinputs' type="text"></p>
+        <p>Points: <input id='nancyfourpoints' class='eventinputs' type="number"></p>
+    </form>
+    <p><a id='nancyfoursubmit' class='famsubmits' href='javascript:;'>Submit</a></p>
+</div>
+<div class='col-md-3 '>
+    <form>
+        <p>Heads: <input id='nancyfivehead' class='eventinputs' type="text"></p>
+        <p>Members: <input id='nancyfivemembers' class='eventinputs' type="text"></p>
+        <p>Points: <input id='nancyfivepoints' class='eventinputs' type="number"></p>
+    </form>
+    <p><a id='nancyfivesubmit' class='famsubmits' href='javascript:;'>Submit</a></p>
+</div>
+<div class='col-md-3 '>
+    <form>
+        <p>Heads: <input id='nancysixhead' class='eventinputs' type="text"></p>
+        <p>Members: <input id='nancysixmembers' class='eventinputs' type="text"></p>
+        <p>Points: <input id='nancysixpoints' class='eventinputs' type="number"></p>
+    </form>
+    <p><a id='nancysixsubmit' class='famsubmits' href='javascript:;'>Submit</a></p>
+</div>
+<div class='col-md-3 '>
+    <form>
+        <p>Heads: <input id='nancysevenhead' class='eventinputs' type="text"></p>
+        <p>Members: <input id='nancysevenmembers' class='eventinputs' type="text"></p>
+        <p>Points: <input id='nancysevenpoints' class='eventinputs' type="number"></p>
+    </form>
+    <p><a id='nancysevensubmit' class='famsubmits' href='javascript:;'>Submit</a></p>
+</div>
+</div>
+</div>
 
 
 <div class='editdash' id='socialeditdash'>
@@ -422,6 +701,7 @@
 </form>
 
 </div>
+<div id='success'>Success!</div>
 
 </div>
 

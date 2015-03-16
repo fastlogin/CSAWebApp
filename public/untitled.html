@@ -1,0 +1,17 @@
+$(document).ready(function(){
+  $('eblogin').click(function(){
+    $.get('/login', {username: $('eblogin').val(), password: $('ebpw').val()}, function(data){
+      if(data = 'success'){
+        $('#instruct').fadeToggle(600);
+        $('#eboardlogin').fadeToggle(600);
+        $('#dashdef').fadeToggle(600, function(){
+              $('#dashwelcome').fadeToggle(600);
+        $('#dash').fadeToggle(600);
+        });
+      }
+      else{
+        $('#wrong').slideToggle(500).delay(1000).slideToggle(500);
+      }
+    });
+  });
+})

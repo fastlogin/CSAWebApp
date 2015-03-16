@@ -7,6 +7,7 @@ var startup = require('./backend/startup');
 var db = require('./backend/db');
 var schemas = require('./backend/schemas');
 var url = require('url');
+var date = new Date();
 
 function urlCheck(request, url){
 	return request.indexOf(url);
@@ -52,8 +53,334 @@ function serveStatic(response, cache, absPath){
 
 var server = http.createServer(function(request, response) {
 	var filePath = false;
+	if(urlCheck(request.url, '/login') > -1){
+		schemas.account.find({username: url.parse(request.url,true).query.username, password: url.parse(request.url,true).query.password}, function(err,found){
+			if(err) throw err;
+			if(found.length){
+				response.end('success');
+			}
+			else{
+				response.end('juiced');
+			}
+		})
+	}
+	else if(urlCheck(request.url, 'announcement') > -1){
+		currDate = (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear();
+		var toAdd = new schemas.announcements({posted: currDate, poster: url.parse(request.url,true).query.poster, content: url.parse(request.url,true).query.content, comments: []});
+		toAdd.save(function(err){
+			if(err) throw err;
+		});
+	}
+	else if(urlCheck(request.url, 'families') > -1){
+		if(urlCheck(request.url, 'Init') > -1){
 
-	if(urlCheck(request.url, 'events') > -1){
+			if(urlCheck(request.url, 'Juice') > -1){
+				schemas.juice.find({},function(err,docs){
+					if(err) throw err;
+					response.end(JSON.stringify({
+						array: docs
+					}));
+				});
+			}
+
+			if(urlCheck(request.url, 'Yellow') > -1){
+				schemas.yellow.find({},function(err,docs){
+					if(err) throw err;
+					response.end(JSON.stringify({
+						array: docs
+					}));
+				});
+			}
+
+			if(urlCheck(request.url, 'Kelly') > -1){
+				schemas.kelly.find({},function(err,docs){
+					if(err) throw err;
+					response.end(JSON.stringify({
+						array: docs
+					}));
+				});
+			}
+
+			if(urlCheck(request.url, 'Nancy') > -1){
+				schemas.nancy.find({},function(err,docs){
+					if(err) throw err;
+					response.end(JSON.stringify({
+						array: docs
+					}));
+				});
+			}
+
+		}
+		else{
+
+			if(urlCheck(request.url, 'Juice') > -1){
+
+				if(urlCheck(request.url, 'One') > -1){
+					schemas.juice.find({},function(err, docs){
+						docs[0].heads = url.parse(request.url,true).query.heads.split(',');
+						docs[0].members = url.parse(request.url,true).query.members.split(',');
+						docs[0].points = url.parse(request.url,true).query.points;
+						docs[0].save();
+					});
+				}
+
+				if(urlCheck(request.url, 'Two') > -1){
+					schemas.juice.find({},function(err, docs){
+						docs[1].heads = url.parse(request.url,true).query.heads.split(',');
+						docs[1].members = url.parse(request.url,true).query.members.split(',');
+						docs[1].points = url.parse(request.url,true).query.points;
+						docs[1].save();
+					});
+				}
+
+				if(urlCheck(request.url, 'Three') > -1){
+					schemas.juice.find({},function(err, docs){
+						docs[2].heads = url.parse(request.url,true).query.heads.split(',');
+						docs[2].members = url.parse(request.url,true).query.members.split(',');
+						docs[2].points = url.parse(request.url,true).query.points;
+						docs[2].save();
+					});
+				}
+
+				if(urlCheck(request.url, 'Four') > -1){
+					schemas.juice.find({},function(err, docs){
+						docs[3].heads = url.parse(request.url,true).query.heads.split(',');
+						docs[3].members = url.parse(request.url,true).query.members.split(',');
+						docs[3].points = url.parse(request.url,true).query.points;
+						docs[3].save();
+					});
+				}
+
+				if(urlCheck(request.url, 'Five') > -1){
+					schemas.juice.find({},function(err, docs){
+						docs[4].heads = url.parse(request.url,true).query.heads.split(',');
+						docs[4].members = url.parse(request.url,true).query.members.split(',');
+						docs[4].points = url.parse(request.url,true).query.points;
+						docs[4].save();
+					});
+				}
+
+				if(urlCheck(request.url, 'Six') > -1){
+					schemas.juice.find({},function(err, docs){
+						docs[5].heads = url.parse(request.url,true).query.heads.split(',');
+						docs[5].members = url.parse(request.url,true).query.members.split(',');
+						docs[5].points = url.parse(request.url,true).query.points;
+						docs[5].save();
+					});
+				}
+
+				if(urlCheck(request.url, 'Seven') > -1){
+					schemas.juice.find({},function(err, docs){
+						docs[6].heads = url.parse(request.url,true).query.heads.split(',');
+						docs[6].members = url.parse(request.url,true).query.members.split(',');
+						docs[6].points = url.parse(request.url,true).query.points;
+						docs[6].save();
+					});
+				}
+			}
+
+			if(urlCheck(request.url, 'Yellow') > -1){
+
+                if(urlCheck(request.url, 'One') > -1){
+                    schemas.yellow.find({},function(err, docs){
+                        docs[0].heads = url.parse(request.url,true).query.heads.split(',');
+                        docs[0].members = url.parse(request.url,true).query.members.split(',');
+                        docs[0].points = url.parse(request.url,true).query.points;
+                        docs[0].save();
+                    });
+                }
+
+                if(urlCheck(request.url, 'Two') > -1){
+                    schemas.yellow.find({},function(err, docs){
+                        docs[1].heads = url.parse(request.url,true).query.heads.split(',');
+                        docs[1].members = url.parse(request.url,true).query.members.split(',');
+                        docs[1].points = url.parse(request.url,true).query.points;
+                        docs[1].save();
+                    });
+                }
+
+                if(urlCheck(request.url, 'Three') > -1){
+                    schemas.yellow.find({},function(err, docs){
+                        docs[2].heads = url.parse(request.url,true).query.heads.split(',');
+                        docs[2].members = url.parse(request.url,true).query.members.split(',');
+                        docs[2].points = url.parse(request.url,true).query.points;
+                        docs[2].save();
+                    });
+                }
+
+                if(urlCheck(request.url, 'Four') > -1){
+                    schemas.yellow.find({},function(err, docs){
+                        docs[3].heads = url.parse(request.url,true).query.heads.split(',');
+                        docs[3].members = url.parse(request.url,true).query.members.split(',');
+                        docs[3].points = url.parse(request.url,true).query.points;
+                        docs[3].save();
+                    });
+                }
+
+                if(urlCheck(request.url, 'Five') > -1){
+                    schemas.yellow.find({},function(err, docs){
+                        docs[4].heads = url.parse(request.url,true).query.heads.split(',');
+                        docs[4].members = url.parse(request.url,true).query.members.split(',');
+                        docs[4].points = url.parse(request.url,true).query.points;
+                        docs[4].save();
+                    });
+                }
+
+                if(urlCheck(request.url, 'Six') > -1){
+                    schemas.yellow.find({},function(err, docs){
+                        docs[5].heads = url.parse(request.url,true).query.heads.split(',');
+                        docs[5].members = url.parse(request.url,true).query.members.split(',');
+                        docs[5].points = url.parse(request.url,true).query.points;
+                        docs[5].save();
+                    });
+                }
+
+                if(urlCheck(request.url, 'Seven') > -1){
+                    schemas.yellow.find({},function(err, docs){
+                        docs[6].heads = url.parse(request.url,true).query.heads.split(',');
+                        docs[6].members = url.parse(request.url,true).query.members.split(',');
+                        docs[6].points = url.parse(request.url,true).query.points;
+                        docs[6].save();
+                    });
+                }
+            }
+
+            if(urlCheck(request.url, 'Kelly') > -1){
+
+                if(urlCheck(request.url, 'One') > -1){
+                    schemas.kelly.find({},function(err, docs){
+                        docs[0].heads = url.parse(request.url,true).query.heads.split(',');
+                        docs[0].members = url.parse(request.url,true).query.members.split(',');
+                        docs[0].points = url.parse(request.url,true).query.points;
+                        docs[0].save();
+                    });
+                }
+
+                if(urlCheck(request.url, 'Two') > -1){
+                    schemas.kelly.find({},function(err, docs){
+                        docs[1].heads = url.parse(request.url,true).query.heads.split(',');
+                        docs[1].members = url.parse(request.url,true).query.members.split(',');
+                        docs[1].points = url.parse(request.url,true).query.points;
+                        docs[1].save();
+                    });
+                }
+
+                if(urlCheck(request.url, 'Three') > -1){
+                    schemas.kelly.find({},function(err, docs){
+                        docs[2].heads = url.parse(request.url,true).query.heads.split(',');
+                        docs[2].members = url.parse(request.url,true).query.members.split(',');
+                        docs[2].points = url.parse(request.url,true).query.points;
+                        docs[2].save();
+                    });
+                }
+
+                if(urlCheck(request.url, 'Four') > -1){
+                    schemas.kelly.find({},function(err, docs){
+                        docs[3].heads = url.parse(request.url,true).query.heads.split(',');
+                        docs[3].members = url.parse(request.url,true).query.members.split(',');
+                        docs[3].points = url.parse(request.url,true).query.points;
+                        docs[3].save();
+                    });
+                }
+
+                if(urlCheck(request.url, 'Five') > -1){
+                    schemas.kelly.find({},function(err, docs){
+                        docs[4].heads = url.parse(request.url,true).query.heads.split(',');
+                        docs[4].members = url.parse(request.url,true).query.members.split(',');
+                        docs[4].points = url.parse(request.url,true).query.points;
+                        docs[4].save();
+                    });
+                }
+
+                if(urlCheck(request.url, 'Six') > -1){
+                    schemas.kelly.find({},function(err, docs){
+                        docs[5].heads = url.parse(request.url,true).query.heads.split(',');
+                        docs[5].members = url.parse(request.url,true).query.members.split(',');
+                        docs[5].points = url.parse(request.url,true).query.points;
+                        docs[5].save();
+                    });
+                }
+
+                if(urlCheck(request.url, 'Seven') > -1){
+                    schemas.kelly.find({},function(err, docs){
+                        docs[6].heads = url.parse(request.url,true).query.heads.split(',');
+                        docs[6].members = url.parse(request.url,true).query.members.split(',');
+                        docs[6].points = url.parse(request.url,true).query.points;
+                        docs[6].save();
+                    });
+                }
+            }
+
+            if(urlCheck(request.url, 'Nancy') > -1){
+
+                if(urlCheck(request.url, 'One') > -1){
+                    schemas.nancy.find({},function(err, docs){
+                        docs[0].heads = url.parse(request.url,true).query.heads.split(',');
+                        docs[0].members = url.parse(request.url,true).query.members.split(',');
+                        docs[0].points = url.parse(request.url,true).query.points;
+                        docs[0].save();
+                    });
+                }
+
+                if(urlCheck(request.url, 'Two') > -1){
+                    schemas.nancy.find({},function(err, docs){
+                        docs[1].heads = url.parse(request.url,true).query.heads.split(',');
+                        docs[1].members = url.parse(request.url,true).query.members.split(',');
+                        docs[1].points = url.parse(request.url,true).query.points;
+                        docs[1].save();
+                    });
+                }
+
+                if(urlCheck(request.url, 'Three') > -1){
+                    schemas.nancy.find({},function(err, docs){
+                        docs[2].heads = url.parse(request.url,true).query.heads.split(',');
+                        docs[2].members = url.parse(request.url,true).query.members.split(',');
+                        docs[2].points = url.parse(request.url,true).query.points;
+                        docs[2].save();
+                    });
+                }
+
+                if(urlCheck(request.url, 'Four') > -1){
+                    schemas.nancy.find({},function(err, docs){
+                        docs[3].heads = url.parse(request.url,true).query.heads.split(',');
+                        docs[3].members = url.parse(request.url,true).query.members.split(',');
+                        docs[3].points = url.parse(request.url,true).query.points;
+                        docs[3].save();
+                    });
+                }
+
+                if(urlCheck(request.url, 'Five') > -1){
+                    schemas.nancy.find({},function(err, docs){
+                        docs[4].heads = url.parse(request.url,true).query.heads.split(',');
+                        docs[4].members = url.parse(request.url,true).query.members.split(',');
+                        docs[4].points = url.parse(request.url,true).query.points;
+                        docs[4].save();
+                    });
+                }
+
+                if(urlCheck(request.url, 'Six') > -1){
+                    schemas.nancy.find({},function(err, docs){
+                        docs[5].heads = url.parse(request.url,true).query.heads.split(',');
+                        docs[5].members = url.parse(request.url,true).query.members.split(',');
+                        docs[5].points = url.parse(request.url,true).query.points;
+                        docs[5].save();
+                    });
+                }
+
+                if(urlCheck(request.url, 'Seven') > -1){
+                    schemas.nancy.find({},function(err, docs){
+                        docs[6].heads = url.parse(request.url,true).query.heads.split(',');
+                        docs[6].members = url.parse(request.url,true).query.members.split(',');
+                        docs[6].points = url.parse(request.url,true).query.points;
+                        docs[6].save();
+                    });
+                }
+            }
+
+
+		}
+	}
+	else if(urlCheck(request.url, 'events') > -1){
 		if(urlCheck(request.url, 'Init') > -1){
 			if(urlCheck(request.url, 'Social') > -1){
 
