@@ -825,6 +825,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f7f7', end
 	font-family: Raleway;
 }
 
+#ainstruct{
+	font-size: 18px;
+	margin-left: 20px;
+	top: -5px;
+
+}
+
 @media(max-width: 1200px){
 	#abouttexttitle{
 	text-align: center;
