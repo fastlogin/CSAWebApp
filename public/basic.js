@@ -852,18 +852,22 @@ $(document).ready(function(){
       )
 
      $(document).ready(function(){
+      var animato = false;
     $('#splashbutton').click(function(){
+      if(!animato){
+        animato = true;
       $('#obliterate').fadeToggle(100, function(){
       $('.splash').delay(200).slideToggle(800)
       $('#navbar').delay(500).fadeToggle(800,function(){
+        animato = false;
         $('#iconsmain').stop(true,true).delay(600).animate({
           'opacity': '1.0'
         },800)
       })
       $('.headtext').textillate({ initialDelay: 1000,in: { effect: 'rollIn' } });
-
-
-    })})})
+    })
+    }
+    })})
 
  /********************************************/
 

@@ -133,8 +133,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 #head1{
 	display: table;
 	height: 600px;
-	background-image: url('head.jpg');
-	background-size: cover;
+	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	background-size: cover;
+  	background-image: url('head.jpg');
 }
 
 #head1text{
@@ -145,7 +148,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 	font-family: Raleway;
 	font-weight: 200;
 	color: rgb(70,70,70);
-	background-color: rgba(255,255,220,0.6);
 }
 
 .headtext{
